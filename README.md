@@ -1,1 +1,1 @@
-Aprendiendo Python, DJango y Base de datos.
+Proyecto y App
