@@ -1,4 +1,5 @@
 {% extends "AppCoder/padre.html" %}
+<<<<<<< HEAD
 
 {% load static %}
 
@@ -11,3 +12,15 @@
     <h3>En el hijo, inicio.html, casi no hay nada :)</h3>
     
 {% endblock %}
+=======
+    {% load static %}
+{% block contenidoQueCambia %}
+
+    <!-- Aqui se va a colocar lo que se cambia y esta asociado a esta vista-->
+    <h1> Este es el titulo del inicio que cambio </h1>
+    <p> Se ha heredado todo desde la plantilla padre </p>
+    <h3> En el hijo, inicio.html, no tenemos casi nada </h3>
+    
+    
+    {% endblock %}
+>>>>>>> fd22513a4f8d182c07713d8f00de3af260a93eb6
