@@ -4,15 +4,15 @@
 
 <ul>
 {% for curso in cursos %}
-    <li> {{curso.nombre}}</li>
-    <li> {{curso.camada}}</li>
+    <li> {{curso.nombre}} </li>
+    <li> {{curso.camada}} </li>
 {% endfor %}
 
 
 </ul>
 {% else %}
-<p>No hay datos con esa descripción.</p>
+<p> No hay datos con esa descripcion.</p>
 
 {% endif %}
 
-<p style="color: red;">{{respuesta}}</p>
+<p style="color: red"> {{respuesta}} </p>

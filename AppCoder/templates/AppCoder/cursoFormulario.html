@@ -10,27 +10,25 @@
 {% extends "AppCoder/padre.html" %}
 {% load static %}
 {% block contenidoQueCambia %}
-        <!-- Aqui va lo que cambia y lo asociado a esta vista -->
+        <!-- Aqui va lo que cambia y lo asociado a este vista -->
     {% if miFormulario.errors %}
 
-    <p style="color: red;"> Estan mal los datos, revisar</p>
+    <p style="color: red"> Estan mal los datos, revisar</p>
 
     {% endif %}
 
     <form action="/cursoFormulario/" method="POST">{% csrf_token %}
-
-        <!-- Aca esta la magia de Django -->
-
+       
+        <!-- Django -->
         <table>
 
             {{miFormulario.as_table}}
 
-        </table>
+        </table>      
 
-        <input type="submit" value="Enviar">
-
+        <input type="submit" value = "Enviar">
     </form>
-
+    
 {% endblock %}
 </body>
 </html>
