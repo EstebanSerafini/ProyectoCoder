@@ -1,11 +1,11 @@
-<p>Estamos buscando el: {{camada}}</p>
+<p>Estamos buscando el: {{profesion}}</p>
 
-{% if cursos %}
+{% if profesiones %}
 
 <ul>
-{% for curso in cursos %}
-    <li> {{curso.nombre}} </li>
-    <li> {{curso.camada}} </li>
+{% for profesion in profesiones %}
+    <li> {{profesion.nombre}} </li>
+    <li> {{profesion.profesion}} </li>
 {% endfor %}
 
 

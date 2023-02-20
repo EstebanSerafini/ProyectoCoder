@@ -6,8 +6,10 @@
 
     <!--Aquí va lo que cambia, y lo asociado a esta vista :)-->
     <h1>Pagina de Inicio</h1>
-    <p>Se ha heredado todo desde la plantilla padre</p>
+    <p>Se ha heredado todo desde la plantilla padre</p>  
 
-    <h3>En el hijo, inicio.html, casi no hay nada :)</h3>
+    <a class="btn btn-primary" href="{% url 'BusquedaCamada' %}">Buscar Camada</a>
+
+    <input type="submit" value = "Buscar Profesor">
     
 {% endblock %}

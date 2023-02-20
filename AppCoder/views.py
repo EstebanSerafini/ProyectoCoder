@@ -86,18 +86,6 @@ def entregables(request):
     
     return render(request, "AppCoder/entregableFormulario.html", {"miFormulario": miFormulario})
 
-
-
-
-
-
-
-
-
-
-
-
-
 def busquedaCamada(request):
     return render(request, "AppCoder/busquedaCamada.html")
 
@@ -106,6 +94,21 @@ def buscar(request):
         camada = request.GET['camada']
         cursos = Curso.objects.filter(camada__icontains=camada)
         return render(request, "AppCoder/resultadoBusqueda.html", {"cursos":cursos, "camada":camada})
+
+    else:
+        respuesta= "No enviaste datos"
+    
+    return HttpResponse(respuesta)
+
+    
+def busquedaProfesor(request):
+    return render(request, "AppCoder/busquedaProfesor.html")
+
+def buscarProfesor(request):
+    if request.GET["profesion"]:
+        profesion = request.GET['profesion']
+        profesiones = Profesor.objects.filter(profesion__icontains=profesion)
+        return render(request, "AppCoder/resultadoProfesor.html", {"profesiones":profesiones, "profesion":profesion})
 
     else:
         respuesta= "No enviaste datos"
