@@ -1,116 +1,96 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppCoder.models import *
-from AppCoder.forms import CursoFormulario, ProfesorFormulario, EntregableFormulario, EstudianteFormulario
-#from django.views.generic import ListView
-#from django.views.generic.detail import DetailView
-#from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from AppCoder.forms import *
 
-# Create your views here.
+
 def inicio(request):
-    return render(request, 'AppCoder/inicio.html')
-    #return HttpResponse('vista inicio')
+      return render(request, "AppCoder/inicio.html")
 
-#def profesores(request):
-    #return render(request, 'AppCoder/profesores.html')
-
-#def estudiantes(request):
-    #return render(request, 'AppCoder/estudiantes.html')
-    #return HttpResponse('vista estudiantes')
-
-#def entregables(request):
-    #return render(request, 'AppCoder/entregables.html')
-    #return HttpResponse('vista entregables')
+# Agregar Datps
 
 def cursos(request):
-    if request.method == 'POST':
-        miFormulario = CursoFormulario(request.POST)
-        print(miFormulario)
+      if request.method == 'POST':
+            miFormulario = CursoFormulario(request.POST) #aquí mellega toda la información del html
+            print(miFormulario)
+            if miFormulario.is_valid():   #Si pasó la validación de Django
+                  informacion = miFormulario.cleaned_data
+                  curso = Curso (nombre=informacion['curso'], camada=informacion['camada']) 
+                  curso.save()
+                  return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
+      else: 
+            miFormulario= CursoFormulario() #Formulario vacio para construir el html
+      return render(request, "AppCoder/cursos.html", {"miFormulario":miFormulario})
 
-        if miFormulario.is_valid:
-            informacion = miFormulario.cleaned_data
-            curso = Curso(nombre=informacion['curso'], camada=informacion['camada'])
-            curso.save()
-            return render(request, "AppCoder/inicio.html")
-
-    else:
-        miFormulario= CursoFormulario()
-    
-    return render(request, "AppCoder/cursoFormulario.html", {"miFormulario": miFormulario})
-
-def profesores(request):
-    if request.method == 'POST':
-        miFormulario = ProfesorFormulario(request.POST)
-        print(miFormulario)
-
-        if miFormulario.is_valid:
-            informacion = miFormulario.cleaned_data
-            profesor = Profesor(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'], profesion=informacion['profesion'])
-            profesor.save()
-            return render(request, "AppCoder/inicio.html")
-
-    else:
-        miFormulario= ProfesorFormulario()
-    
-    return render(request, "AppCoder/profesorFormulario.html", {"miFormulario": miFormulario})
 
 def estudiantes(request):
-    if request.method == 'POST':
-        miFormulario = EstudianteFormulario(request.POST)
-        print(miFormulario)
+      if request.method == 'POST':
+            miFormulario = EstudianteFormulario(request.POST) #aquí me llega toda la información del html
+            print(miFormulario)
+            if miFormulario.is_valid():   #Si pasó la validación de Django
+                  informacion = miFormulario.cleaned_data
+                  estudiante = Estudiante(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email']) 
+                  estudiante.save()
+                  return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
+      else: 
+            miFormulario= EstudianteFormulario() #Formulario vacio para construir el html
+      return render(request, "AppCoder/estudiantes.html", {"miFormulario":miFormulario})
 
-        if miFormulario.is_valid:
-            informacion = miFormulario.cleaned_data
-            estudiante = Estudiante(nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'])
-            estudiante.save()
-            return render(request, "AppCoder/inicio.html")
 
-    else:
-        miFormulario= EstudianteFormulario()
-    
-    return render(request, "AppCoder/estudianteFormulario.html", {"miFormulario": miFormulario})
+def profesores(request):
+      if request.method == 'POST':
+            miFormulario = ProfesorFormulario(request.POST) #aquí mellega toda la información del html
+            print(miFormulario)
+            if miFormulario.is_valid():   #Si pasó la validación de Django
+                  informacion = miFormulario.cleaned_data
+                  profesor = Profesor (nombre=informacion['nombre'], apellido=informacion['apellido'], email=informacion['email'], profesion=informacion['profesion']) 
+                  profesor.save()
+                  return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
+      else: 
+            miFormulario= ProfesorFormulario() #Formulario vacio para construir el html
+      return render(request, "AppCoder/profesores.html", {"miFormulario":miFormulario})
+
 
 def entregables(request):
-    if request.method == 'POST':
-        miFormulario = EntregableFormulario(request.POST)
-        print(miFormulario)
+      if request.method == 'POST':
+            miFormulario = EntregableFormulario(request.POST) #aquí mellega toda la información del html
+            print(miFormulario)
+            if miFormulario.is_valid():   #Si pasó la validación de Django
+                  informacion = miFormulario.cleaned_data
+                  entregable = Entregable (nombre=informacion['nombre'], fechaDeEntrega=informacion['fechaDeEntrega'], entregado=informacion['entregado']) 
+                  entregable.save()
+                  return render(request, "AppCoder/inicio.html") #Vuelvo al inicio o a donde quieran
+      else: 
+            miFormulario= EntregableFormulario() #Formulario vacio para construir el html
+      return render(request, "AppCoder/entregables.html", {"miFormulario":miFormulario})
 
-        if miFormulario.is_valid:
-            informacion = miFormulario.cleaned_data
-            entregable = Entregable(nombre=informacion['nombre'], fechaDeEntrega=informacion['fechaDeEntrega'], entregado=informacion['entregado'])
-            entregable.save()
-            return render(request, "AppCoder/inicio.html")
 
-    else:
-        miFormulario= EntregableFormulario()
-    
-    return render(request, "AppCoder/entregableFormulario.html", {"miFormulario": miFormulario})
-
-def busquedaCamada(request):
-    return render(request, "AppCoder/busquedaCamada.html")
+# Busqueda
 
 def buscar(request):
-    if request.GET["camada"]:
-        camada = request.GET['camada']
-        cursos = Curso.objects.filter(camada__icontains=camada)
-        return render(request, "AppCoder/resultadoBusqueda.html", {"cursos":cursos, "camada":camada})
-
-    else:
-        respuesta= "No enviaste datos"
-    
-    return HttpResponse(respuesta)
-
-    
-def busquedaProfesor(request):
-    return render(request, "AppCoder/busquedaProfesor.html")
+      if  request.GET["camada"]:
+            camada = request.GET['camada'] 
+            cursos = Curso.objects.filter(camada__icontains=camada)
+            return render(request, "AppCoder/inicio.html", {"cursos":cursos, "camada":camada})
+      else: 
+            respuesta = "No enviaste datos"
+      return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
 
 def buscarProfesor(request):
-    if request.GET["profesion"]:
-        profesion = request.GET['profesion']
-        profesiones = Profesor.objects.filter(profesion__icontains=profesion)
-        return render(request, "AppCoder/resultadoProfesor.html", {"profesiones":profesiones, "profesion":profesion})
+      if  request.GET["profesion"]:
+            profesion = request.GET['profesion'] 
+            profesores = Profesor.objects.filter(profesion__icontains=profesion)
+            return render(request, "AppCoder/inicio.html", {"profesores": profesores, "profesion":profesion})
+      else: 
+            respuesta = "No enviaste datos"
+      return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
 
-    else:
-        respuesta= "No enviaste datos"
-    
-    return HttpResponse(respuesta)
+def buscarEstudiante(request):
+      if  request.GET["nombre"]:
+            nombre = request.GET['nombre'] 
+            estudiantes = Estudiante.objects.filter(nombre__icontains=nombre)
+            return render(request, "AppCoder/inicio.html", {"estudiantes": estudiantes, "nombre":nombre})
+      else: 
+            respuesta = "No enviaste datos"
+      return render(request, "AppCoder/inicio.html", {"respuesta":respuesta})
+

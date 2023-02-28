@@ -1,5 +1,28 @@
-URL para realizar busquedas de Profesores por Profesion: http://127.0.0.1:8000/AppCoder/busquedaProfesor
-Profesiones creadas que se pueden buscar: Profesor, Programador, Mecanico, Albañil, Geologa.
+BUSCAR CAMADA (ingresar el numero de camada)
 
-La busqueda de Camadas realice un boton en la pagina de inicio que lleva a la busqueda. Tambien se puede ingresar desde la URL http://127.0.0.1:8000/AppCoder/busquedaCamada
-Las camadas que se pueden buscar son: 12345, 15855, 19881, 32065, 23800.
+camadas registradas:
+
+92765 --> Solidity
+15855 --> JAVA
+19881 --> Desarrollo Web
+32065 --> JavaScript
+23800 --> Python
+
+BUSCAR PROFESORES (ingresar la profesion a buscar)
+
+profesiones registradas:
+
+Profesor --> Juan Suarez
+Programador --> Roberto Gomez
+Mecanico --> Carlos Perez
+Albañil --> Mirko Albornoz
+Geologa --> Maria Caratoni
+
+BUSCAR ESTUDIANTES (ingrese el nombre del estudiante)
+
+estudiantes registrados:
+
+Ricardo --> Ricardo Ricardito
+Lucas --> Lucas Gutierrez
+Roberto --> Roberto Robertito
+Carlos --> Carlos Carlitos

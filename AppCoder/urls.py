@@ -1,16 +1,13 @@
 from django.urls import path
 from AppCoder import views
-#from AppCoder import curso
-#views
 
 urlpatterns = [
-    path('', views.inicio, name="Inicio"),
+    path('', views.inicio, name="Inicio"), #esta era nuestra primer view
     path('cursos', views.cursos, name="Cursos"),
     path('profesores', views.profesores, name="Profesores"),
     path('estudiantes', views.estudiantes, name="Estudiantes"),
     path('entregables', views.entregables, name="Entregables"),
-    path('busquedaCamada', views.busquedaCamada, name= "BusquedaCamada"),
     path('buscar/', views.buscar),
-    path('busquedaProfesor', views.busquedaProfesor, name= "BuscarProfesor"),
     path('buscarProfesor/', views.buscarProfesor),
+    path('buscarEstudiante/', views.buscarEstudiante),
 ]

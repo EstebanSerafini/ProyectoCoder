@@ -8,13 +8,13 @@ class CursoFormulario(forms.Form):
 class ProfesorFormulario(forms.Form):
     nombre=forms.CharField(max_length=30)
     apellido=forms.CharField(max_length=30)
-    email = forms.CharField()
+    email = forms.EmailField()
     profesion = forms.CharField(max_length=30)
 
 class EstudianteFormulario(forms.Form):
     nombre=forms.CharField(max_length=30)
     apellido=forms.CharField(max_length=30)
-    email = forms.CharField()
+    email = forms.EmailField()
 
 class EntregableFormulario(forms.Form):
     nombre=forms.CharField(max_length=40)

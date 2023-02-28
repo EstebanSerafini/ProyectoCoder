@@ -2,8 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Curso(models.Model):
-    nombre=models.CharField(max_length=40)
-    camada = models.CharField(max_length=30)
+    nombre=models.CharField(max_length=30)
+    camada = models.IntegerField()
     
     def __str__(self):
         return f"Nombre: {self.nombre} - Camada: {self.camada}"
@@ -26,7 +26,7 @@ class Profesor(models.Model):
         return f"Nombre: {self.nombre} - Apellido: {self.apellido} - E-Mail: {self.email} - Profesion: {self.profesion}"
     
 class Entregable(models.Model):
-    nombre=models.CharField(max_length=40)
+    nombre=models.CharField(max_length=30)
     fechaDeEntrega = models.DateField()
     entregado = models.BooleanField()
 

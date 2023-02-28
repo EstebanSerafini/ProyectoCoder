@@ -3,11 +3,23 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
+    
+    <h1>Formulario - Agregar Curso</h1>
+    
+    {% if miFormulario.errors %}
 
+    <p style="color: red;"> Están mal los datos, revisar</p>
 
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Cursos</h1>
-    <p>Acá va la info de los cursos</p>
+    {% endif %}
 
+    <form action="" method="POST">{% csrf_token %}
+        <!-- Django -->
+        
+        <table>
+            {{ miFormulario.as_table }}
+        </table>
+
+        <input type="submit", value="Enviar">
+    </form>
 
 {% endblock %}

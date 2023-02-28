@@ -4,12 +4,109 @@
 
 {% block contenidoQueCambia %}
 
-    <!--Aquí va lo que cambia, y lo asociado a esta vista :)-->
-    <h1>Pagina de Inicio</h1>
-    <p>Se ha heredado todo desde la plantilla padre</p>  
+    <h1>{{mensaje}}</h1>
+  
+    <h3>
+        Buscar Camada: Ingrese el numero de Camada para buscar el curso.
+    </h3>
+    <h3>
+        Buscar Profesor: Ingrese el nombre del Curso para obtener el nombre del Profesor.
+    </h3>
+    <h3>
+        Buscar Estudiante: Ingrese su Nombre para saber si esta registrado. 
+    </h3>
 
-    <a class="btn btn-primary" href="{% url 'BusquedaCamada' %}">Buscar Camada</a>
+        <!-- Boton Buscar Camada -->
 
-    <input type="submit" value = "Buscar Profesor">
+    <form action="/AppCoder/buscar/" method="GET">
+
+        <input type="number" name="camada" id="camada">
+
+        <input type="submit" value="Buscar Camada">
+
+    </form>
+
+        <!-- Buscar Camada -->
+
+        {% if cursos %}
+
+        <p>Estamos buscando el: {{camada}}</p>
     
+        <ul>
+        {% for curso in cursos %}
+            <li> {{curso.nombre}} </li>
+            <li> {{curso.camada}} </li>
+        {% endfor %}
+    
+        </ul>
+    
+        {% else %}
+        <p>No hay datos con esa descripción.</p>
+    
+        {% endif %}
+    
+        <p style="color: red;">{{respuesta}}</p>
+
+        <!-- Boton Buscar Profesor-->
+
+    <form action="/AppCoder/buscarProfesor/" method="GET">
+
+        <input type="text" name="profesion" id="profesion">
+
+        <input type="submit" value="Buscar Profesor">
+
+    </form>
+
+        <!-- Buscar Profesores-->
+
+        {% if profesores %}
+
+        <p>Estamos buscando profesor del curso de: {{profesion}}</p>
+    
+        <ul>
+        {% for profesor in profesores %}
+            <li> {{profesor.nombre}} </li>
+            <li> {{profesor.profesion}} </li>
+        {% endfor %}
+    
+        </ul>
+    
+        {% else %}
+        <p>No hay datos con esa descripción.</p>
+    
+        {% endif %}
+    
+        <p style="color: red;">{{respuesta}}</p>
+
+        <!-- Boton Buscar Estudiantes-->
+
+    <form action="/AppCoder/buscarEstudiante/" method="GET">
+
+        <input type="text" name="nombre" id="nombre">
+
+        <input type="submit" value="Buscar Estudiante">
+
+    </form>
+
+         <!-- Buscar Estudiantes-->
+
+         {% if estudiantes %}
+
+         <p>Estamos buscando si el estudiante esta registrado: {{nombre}}</p>
+     
+         <ul>
+         {% for estudiante in estudiantes %}
+             <li> {{estudiante.apellido}} </li>
+             <li> {{estudiante.nombre}} </li>
+         {% endfor %}
+     
+         </ul>
+     
+         {% else %}
+         <p>No hay datos con esa descripción.</p>
+     
+         {% endif %}
+     
+         <p style="color: red;">{{respuesta}}</p>
+ 
 {% endblock %}
